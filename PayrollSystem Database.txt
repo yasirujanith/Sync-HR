@@ -1,0 +1,197 @@
+drop database PayRollSystem;
+CREATE DATABASE PayRollSystem;
+
+USE PayRollSystem;
+
+CREATE TABLE grade(
+	gradeID varchar(10) not null,
+	basicSalary decimal(20,2),
+	OTRate decimal(20,2),
+	noPayRate decimal(20,2),
+	maxLoanAmount decimal(20,2),
+	vehicleAllowence decimal(20,2),
+	transportAmount decimal(20,2),
+	leavesCount int,
+	noPayLeavesCount int,
+	halfDayCount int,
+	CONSTRAINT PRIMARY KEY (gradeID)
+);
+
+CREATE TABLE department(
+	departmentID varchar(10) not null,
+	name varchar(100) not null,
+	numOfEmployees int,
+	CONSTRAINT PRIMARY KEY (departmentID)
+);
+
+CREATE TABLE employee(
+	employeeID varchar(10) not null,
+	firstName varchar(50) not null,
+	lastName varchar(50) not null,
+	NIC varchar(20) not null,
+	address varchar(100) not null,
+	dateOfBirth date not null,
+	gender varchar(10),
+	maritalStatus varchar(10) not null,
+	contactNumber varchar(20) not null,
+	joiningDate date not null,
+	gradeID varchar(20),
+	departmentID varchar(20),
+	CONSTRAINT PRIMARY KEY (employeeID),
+	CONSTRAINT FOREIGN KEY(gradeID) REFERENCES grade(gradeID)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FOREIGN KEY(departmentID) REFERENCES department(departmentID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE paymenttype(
+	employeeID varchar(10) not null,
+	isCash boolean not null,
+	isCheque boolean not null,
+	isDeposit boolean not null,
+	bankName varchar(200) not null,
+	accNumber varchar(50) not null,
+	CONSTRAINT PRIMARY KEY(employeeID)
+);
+
+CREATE TABLE employeedepartment(
+	employeeID varchar(10) not null,
+	departmentID varchar(10) not null,
+	CONSTRAINT PRIMARY KEY(employeeID,departmentID),
+	CONSTRAINT FOREIGN KEY(employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FOREIGN KEY(departmentID) REFERENCES department(departmentID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE attendance(
+	employeeID varchar(10) not null,
+	date date not null,
+	inTime varchar(50),
+	shortLeaveOutTime varchar(50),
+	shortLeaveInTime varchar(50),
+	outTime varchar(50),
+	OTHours varchar(50),
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE leaves(
+	employeeID varchar(10) not null,
+	date date not null,
+	leaveType varchar(100) not null,
+	reason varchar(200),
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE bonus(
+	employeeID varchar(10) not null,
+	year varchar(10) not null,
+	month varchar(20) not null,
+	type varchar(200) not null,
+	amount decimal(10,2) not null,
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE loan(
+	employeeID varchar(10) not null,
+	loanID varchar(20) not null,
+	date date not null,
+	description varchar(100),
+	amount decimal(10,2) not null,
+	monthlyInstallment decimal(10,2) not null,
+	installments int not null,
+	dueDate date not null,
+	isPaymentOver boolean not null,
+	CONSTRAINT PRIMARY KEY(loanID),
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE loanpayment(
+	loanID varchar(10) not null,
+	date date not null,
+	amount decimal(10,2) not null,
+	CONSTRAINT FOREIGN KEY (loanID) REFERENCES loan(loanID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE advancesalary(
+	employeeID varchar(10) not null,
+	date date not null,
+	amount decimal(10,2), 
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE damage(
+	damageID varchar(10) not null,
+	employeeID varchar(10) not null,
+	date date not null,
+	description varchar(300) not null,
+	damageCost decimal(10,2),
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE role(
+	roleID varchar(10) not null,
+	description varchar(100) not null,
+	CONSTRAINT PRIMARY KEY (roleID)
+);
+
+CREATE TABLE employeeRole(
+	employeeID varchar(10) not null,
+	roleID varchar(10) not null,
+	CONSTRAINT PRIMARY KEY(EmployeeID,RoleID),
+	CONSTRAINT FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FOREIGN KEY (roleID) REFERENCES role(roleID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE salary(
+	salaryID varchar(10) not null,
+	employeeID varchar(10) not null,
+	basicSalary decimal(10,2),
+	OTEarning decimal(10,2),
+	bonus decimal(10,2),
+	stampFee decimal(10,2),
+	TAX decimal(10,2),
+	salaryAdvance decimal(10,2),
+	loan decimal(10,2),
+	noPayLeaves decimal(10,2),
+	halfDay decimal(10,2),
+	damages decimal(10,2),
+	EPF decimal(10,2),
+	ETF decimal(10,2),
+	CONSTRAINT PRIMARY KEY (salaryID,employeeID),
+	CONSTRAINT FOREIGN KEY(employeeID) REFERENCES employee(employeeID) 
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE salarypayment(
+	salaryID varchar(10) not null,
+	paymentType varchar(10) not null,
+	date date not null,
+	netSalary decimal(10,2),
+	CONSTRAINT PRIMARY KEY (salaryID),
+	CONSTRAINT FOREIGN KEY (salaryID) REFERENCES salary(salaryID) 
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE user(
+	userName varchar(100) not null,
+	password varchar(100) not null,
+	CONSTRAINT PRIMARY KEY(userName)
+);
+
+CREATE TABLE userlogin(
+	userName varchar(100) not null,
+	logInTime varchar(10),
+	logOutTime varchar(10),
+	CONSTRAINT FOREIGN KEY (userName) REFERENCES user(userName) 
+	ON UPDATE CASCADE ON DELETE CASCADE		
+);

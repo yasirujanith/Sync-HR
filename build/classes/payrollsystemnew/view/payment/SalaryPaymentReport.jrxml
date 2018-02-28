@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="EmployeeID" class="java.lang.String"/>
+	<parameter name="EmployeeName" class="java.lang.String"/>
+	<parameter name="Bank" class="java.lang.String"/>
+	<parameter name="AccountNum" class="java.lang.String"/>
+	<parameter name="BasicSalary" class="java.lang.String"/>
+	<parameter name="OTEarning" class="java.lang.String"/>
+	<parameter name="Bonus" class="java.lang.String"/>
+	<parameter name="EPF(Employer)" class="java.lang.String"/>
+	<parameter name="ETF(Employer)" class="java.lang.String"/>
+	<parameter name="TotalEarning" class="java.lang.String"/>
+	<parameter name="NetSalary" class="java.lang.String"/>
+	<parameter name="Year" class="java.lang.String"/>
+	<parameter name="Month" class="java.lang.String"/>
+	<parameter name="PaymentType" class="java.lang.String"/>
+	<parameter name="EPF(Employee)" class="java.lang.String"/>
+	<parameter name="StampFee" class="java.lang.String"/>
+	<parameter name="Tax" class="java.lang.String"/>
+	<parameter name="SalaryAdvance" class="java.lang.String"/>
+	<parameter name="Loans" class="java.lang.String"/>
+	<parameter name="NoPayLeaves" class="java.lang.String"/>
+	<parameter name="HalfDay" class="java.lang.String"/>
+	<parameter name="Damages" class="java.lang.String"/>
+	<parameter name="TotalDeduction" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="555" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Salary Payment Sheet]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="476" splitType="Stretch">
+			<staticText>
+				<reportElement x="48" y="15" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Employee ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="35" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="55" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Bank :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="75" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Acount Num :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="15" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Year :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="35" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Month :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="55" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Payment Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="168" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Basic Salary :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="188" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[OT Earning :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="208" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Bonus :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="346" width="121" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<text><![CDATA[Total Earnings :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="238" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[EPF(Employer) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="258" width="92" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[ETF(Employer) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="168" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[EPF(Employee) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="188" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Stamp Fee :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="208" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Tax :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="228" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Salary Advance :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="248" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Loans :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="268" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[No Pay Leaves :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="288" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Half Day :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="308" width="96" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<text><![CDATA[Damages :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="346" width="121" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<text><![CDATA[Total Deductions :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="378" width="121" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<text><![CDATA[Net Amount :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="15" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EmployeeID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="35" width="150" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EmployeeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="55" width="150" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Bank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="75" width="150" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AccountNum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="168" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BasicSalary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="188" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{OTEarning}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="208" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Bonus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="238" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EPF(Employer)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="258" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ETF(Employer)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="346" width="90" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalEarning}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="378" width="89" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NetSalary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="15" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="35" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="55" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PaymentType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="168" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EPF(Employee)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="188" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{StampFee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="208" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="248" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Loans}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="268" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NoPayLeaves}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="288" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HalfDay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="308" width="100" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Damages}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="346" width="90" height="20"/>
+				<textElement>
+					<font fontName="Dialog" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalDeduction}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="228" width="100" height="20"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SalaryAdvance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="52" y="456" width="88" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[(Issued Date) ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="48" y="445" width="101" height="1"/>
+			</line>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="52" y="425" width="97" height="20"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="138" width="101" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="14" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Earnings :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="138" width="100" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Deductions :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="25" y="112" width="510" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="371" y="456" width="90" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[(Confirmation)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="359" y="446" width="116" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="160" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
